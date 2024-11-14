@@ -1,29 +1,12 @@
-// // server.js
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const clientRoutes = require('./Routes/clientRoutes');
-// const contactRoutes = require('./Routes/contactRoutes');
-
-// const app = express();
-
-// // Middleware
-// app.use(bodyParser.json());
-// app.use(express.static('Public'));
-
-// // Routes
-// app.use('/api/clients', clientRoutes);
-// app.use('/api/contacts', contactRoutes);
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
-
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');  // Import cors middleware
 const app = express();
 const port = 3000;
 const path = require('path'); // Required to resolve paths to static files
+
+// Middleware to allow CORS
+app.use(cors());  // Enable CORS for all origins
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'Public'))); // Serving static files from the 'Public' directory
@@ -37,7 +20,7 @@ app.use(express.json()); // to parse JSON requests
 const db = mysql.createConnection({
     host: 'localhost', // MySQL server host
     user: 'root', // MySQL username
-    password: 'Nolubabalomaxazana03.', // MySQL password
+    password: 'Lungeleni55*', // MySQL password
     database: 'client_management' // Database name
 });
 
@@ -163,4 +146,3 @@ app.delete('/unlink-contact/:id', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
